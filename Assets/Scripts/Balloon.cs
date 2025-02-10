@@ -36,8 +36,8 @@ public class Balllooon : MonoBehaviour
         Destroy(balloon.gameObject);
         // we are setting this to be used inside update to stop accessing the 
         // object when it is destroyed
-        ScoreManager.instance.IncreaseScore(1);
-        balloon = null;
+        //ScoreManager.instance.IncreaseScore(1);
+        //balloon = null;
 
     }
 
