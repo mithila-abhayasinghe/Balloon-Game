@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 5353540314625175832}
   m_Layer: 0
   m_Name: Balloon
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -79,7 +79,7 @@ SpriteRenderer:
   m_SortingLayerID: -1638129737
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 8166710274925509176, guid: e0c2856e8fdab9840aace7c3f9e96b7e, type: 3}
+  m_Sprite: {fileID: -145015972323016004, guid: 4e940cf7bf3065e42a2ba96f66254682, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

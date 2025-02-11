@@ -5,10 +5,11 @@ public class Balllooon : MonoBehaviour
 {
     public Rigidbody2D balloon;
     public float speed = 10f;
+    private bool isObstacle;
 
     void Start()
     {
-        
+        isObstacle = gameObject.CompareTag("Obstacle");
     }
 
     void Update()
@@ -33,6 +34,17 @@ public class Balllooon : MonoBehaviour
         // you do not have to add this inside update always outside i think 
 
         // this only destroyed the rigidbody not the entire thing
+        if (!isObstacle)
+        {
+            GameManager.instance.HitObstacle();
+            Destroy(gameObject);
+        }
+        else
+        {
+            GameManager.instance.PopBalloon();
+            //ScoreManager.instance.IncreaseScore(1);
+        }
+
         Destroy(balloon.gameObject);
         // we are setting this to be used inside update to stop accessing the 
         // object when it is destroyed
@@ -41,4 +53,11 @@ public class Balllooon : MonoBehaviour
 
     }
 
+    private void OnBecameInvisible()
+    {
+        if (!isObstacle && balloon != null) {
+            GameManager.instance.MissBalloon();
+            Destroy(balloon.gameObject);
+        }
+    }
 }
