@@ -1,12 +1,13 @@
+using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 
 public class Balllooon : MonoBehaviour
 {
     public Rigidbody2D balloon;
-    public float speed = 10f;
+    public float speed = 5f;
     private bool isObstacle;
-
+    public float deadzone = 15f;
     void Start()
     {
         isObstacle = gameObject.CompareTag("Obstacle");
@@ -24,7 +25,10 @@ public class Balllooon : MonoBehaviour
             balloon.MovePosition(targetPositon);
 
         }
-        
+        if (balloon.position.y > deadzone)
+        {
+            Destroy(balloon);
+        }
     }
 
 

@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 5353540314625175832}
   m_Layer: 0
   m_Name: Balloon
-  m_TagString: Obstacle
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -79,12 +79,12 @@ SpriteRenderer:
   m_SortingLayerID: -1638129737
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: -145015972323016004, guid: 4e940cf7bf3065e42a2ba96f66254682, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Sprite: {fileID: 1000556626324898727, guid: 7c8a08050008ca244bc85a04e56b1807, type: 3}
+  m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 5.82, y: 8.2}
+  m_Size: {x: 2.67, y: 3.72}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -115,7 +115,7 @@ Rigidbody2D:
     m_Bits: 0
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!114 &2956304352785929042
 MonoBehaviour:
@@ -131,6 +131,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   balloon: {fileID: 8723207905085040925}
   speed: 7
+  deadzone: 15
 --- !u!58 &5353540314625175832
 CircleCollider2D:
   m_ObjectHideFlags: 0
