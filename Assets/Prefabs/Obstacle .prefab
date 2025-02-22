@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 8054966568598114216}
   - component: {fileID: 9162206982821648829}
   - component: {fileID: 3583620984645636252}
-  - component: {fileID: 4434347839441435680}
   - component: {fileID: 5303416364610406410}
+  - component: {fileID: -3630964333753206870}
   m_Layer: 0
   m_Name: 'Obstacle '
   m_TagString: Obstacle
@@ -116,9 +116,24 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 1
-  m_Constraints: 0
---- !u!58 &4434347839441435680
-CircleCollider2D:
+  m_Constraints: 4
+--- !u!114 &5303416364610406410
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5007864289220203704}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c71be93323c5451408a0c896d00ed8d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  balloon: {fileID: 3583620984645636252}
+  speed: 10
+  deadzone: 15
+--- !u!61 &-3630964333753206870
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -152,19 +167,14 @@ CircleCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_Radius: 0.5
---- !u!114 &5303416364610406410
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5007864289220203704}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c71be93323c5451408a0c896d00ed8d5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  balloon: {fileID: 3583620984645636252}
-  speed: 10
-  deadzone: 15
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 2.65, y: 2.84}
+    newSize: {x: 0.62, y: 0.33}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 2.65, y: 2.84}
+  m_EdgeRadius: 0

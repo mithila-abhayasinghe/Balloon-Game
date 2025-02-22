@@ -2,7 +2,7 @@ using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 
-public class Balllooon : MonoBehaviour
+public class Balloon : MonoBehaviour
 {
     public Rigidbody2D balloon;
     public float speed = 5f;
@@ -34,26 +34,18 @@ public class Balllooon : MonoBehaviour
 
     private void OnMouseDown()
     {
-        // Something about this function OnMouseDown 
-        // you do not have to add this inside update always outside i think 
 
-        // this only destroyed the rigidbody not the entire thing
         if (!isObstacle)
         {
-            GameManager.instance.HitObstacle();
+            GameManager.instance.PopBalloon();
             Destroy(gameObject);
         }
         else
         {
-            GameManager.instance.PopBalloon();
-            //ScoreManager.instance.IncreaseScore(1);
+            GameManager.instance.HitObstacle();
+            Destroy(gameObject);
         }
 
-        Destroy(balloon.gameObject);
-        // we are setting this to be used inside update to stop accessing the 
-        // object when it is destroyed
-        //ScoreManager.instance.IncreaseScore(1);
-        //balloon = null;
 
     }
 
