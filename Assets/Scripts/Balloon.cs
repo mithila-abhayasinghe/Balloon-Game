@@ -6,11 +6,15 @@ public class Balloon : MonoBehaviour
 {
     public Rigidbody2D balloon;
     public float speed = 5f;
-    private bool isObstacle;
-    public float deadzone = 15f;
+    private bool wasClicked = false;
+
+    // new
+    private bool isRedBalloon;
+
     void Start()
     {
-        isObstacle = gameObject.CompareTag("Obstacle");
+        isRedBalloon = gameObject.CompareTag("RedBalloon");
+        //isObstacle = gameObject.CompareTag("Obstacle");
     }
 
     void Update()
@@ -19,15 +23,11 @@ public class Balloon : MonoBehaviour
         //balloon.AddForceY(speed);
 
         // Stop updating when the object is destroyed
-        if (balloon != null)
+        if (gameObject != null)
         {
             Vector2 targetPositon = balloon.position + (Time.deltaTime * new Vector2 (0, speed));
             balloon.MovePosition(targetPositon);
 
-        }
-        if (balloon.position.y > deadzone)
-        {
-            Destroy(balloon);
         }
     }
 
@@ -35,25 +35,25 @@ public class Balloon : MonoBehaviour
     private void OnMouseDown()
     {
 
-        if (!isObstacle)
+        wasClicked = true;
+        // new
+        if (isRedBalloon)
         {
-            GameManager.instance.PopBalloon();
-            Destroy(gameObject);
+            GameManager.instance.HitRedBalloon();
         }
         else
         {
-            GameManager.instance.HitObstacle();
-            Destroy(gameObject);
+            GameManager.instance.PopBlueBalloon();
         }
-
+        Destroy(gameObject);
 
     }
 
     private void OnBecameInvisible()
     {
-        if (!isObstacle && balloon != null) {
-            GameManager.instance.MissBalloon();
-            Destroy(balloon.gameObject);
+        if (!isRedBalloon && !wasClicked) {
+            GameManager.instance.MissBlueBalloon();
+            Destroy(gameObject);
         }
     }
 }

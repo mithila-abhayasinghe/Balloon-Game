@@ -1,22 +1,30 @@
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
     public GameObject gameOverPanel;
     public GameObject pausePanel;
+
     public Image[] hearts;
+    private int lives = 3;
+
     public AudioClip popSound;
     public AudioClip wrongSound;
     private AudioSource audioSource;
-    private int missedBalloons = 0;
-    private int obstacleHits = 0;
     private bool isPaused = false;
+
+    // New game mechanics 
+    private int score = 0;
+    public TextMeshProUGUI scoreText;
 
     void Start()
     {
+        scoreText.text = score.ToString();
+
         if (instance == null)
         {
             instance = this;
@@ -38,7 +46,6 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        // Pause functionality
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             TogglePause();
@@ -52,38 +59,46 @@ public class GameManager : MonoBehaviour
         pausePanel.SetActive(isPaused);
     }
 
-    public void MissBalloon()
+    public void MissBlueBalloon()
     {
-        missedBalloons++;
-        UpdateHearts(3 - missedBalloons);
 
-        if (missedBalloons >= 3)
+        lives--;
+        UpdateHearts(lives);
+
+        if (lives <= 0)
         {
             GameOver();
         }
     }
 
-    public void HitObstacle()
+    // new
+    public void HitRedBalloon()
     {
-        obstacleHits++;
+        lives--;
         PlayWrongSound();
-
-        if (obstacleHits >= 3)
+        // new ignored combo 
+        UpdateHearts(lives);
+        if (lives <= 0)
         {
             GameOver();
         }
     }
 
-    public void PopBalloon()
+
+    // new
+    public void PopBlueBalloon()
     {
+        // ignored combo but adding score
+        score++;
+        scoreText.text = score.ToString();
         PlayPopSound();
     }
 
-    private void UpdateHearts(int remainingHearts)
+    private void UpdateHearts(int currentLives)
     {
         for (int i = 0; i < hearts.Length; i++)
         {
-            hearts[i].enabled = i < remainingHearts;
+            hearts[i].enabled = i < currentLives;
         }
     }
 
