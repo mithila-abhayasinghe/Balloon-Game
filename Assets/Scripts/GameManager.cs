@@ -21,10 +21,8 @@ public class GameManager : MonoBehaviour
     private int score = 0;
     public TextMeshProUGUI scoreText;
 
-    void Start()
+    private void Awake()
     {
-        scoreText.text = score.ToString();
-
         if (instance == null)
         {
             instance = this;
@@ -33,6 +31,10 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+    void Start()
+    {
+        scoreText.text = score.ToString();
 
         audioSource = GetComponent<AudioSource>();
         if (audioSource == null)

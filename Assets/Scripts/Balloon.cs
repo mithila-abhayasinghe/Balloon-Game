@@ -37,13 +37,16 @@ public class Balloon : MonoBehaviour
 
         wasClicked = true;
         // new
-        if (isRedBalloon)
+        if (GameManager.instance != null)
         {
-            GameManager.instance.HitRedBalloon();
-        }
-        else
-        {
-            GameManager.instance.PopBlueBalloon();
+            if (isRedBalloon)
+            {
+                GameManager.instance.HitRedBalloon();
+            }
+            else
+            {
+                GameManager.instance.PopBlueBalloon();
+            }
         }
         Destroy(gameObject);
 
@@ -51,7 +54,7 @@ public class Balloon : MonoBehaviour
 
     private void OnBecameInvisible()
     {
-        if (!isRedBalloon && !wasClicked) {
+        if (!isRedBalloon && !wasClicked && GameManager.instance != null) {
             GameManager.instance.MissBlueBalloon();
             Destroy(gameObject);
         }
